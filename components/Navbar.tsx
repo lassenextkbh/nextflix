@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
 import { BsChevronDown, BsSearch, BsBell } from "react-icons/bs";
@@ -21,12 +20,12 @@ const Navbar = () => {
       } else {
         setShowBackground(false);
       }
+    };
 
-      window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -53,13 +52,7 @@ const Navbar = () => {
             ${showBackground ? "bg-zinc-900 bg-opacity-90" : ""}
         `}
       >
-        <Image
-          className="h-4 w-auto lg:h-7"
-          src="/images/logo.png"
-          alt="Logo"
-          width="1153"
-          height="313"
-        />
+        <img className="h-4 w-auto lg:h-7" src="/images/logo.png" alt="Logo" />
         <div
           className="
                 flex-row
@@ -101,12 +94,7 @@ const Navbar = () => {
             className="flex flex-row items-center gap-2 cursor-pointer relative"
           >
             <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-              <Image
-                src="/images/default-red.png"
-                alt="Profile"
-                width="320"
-                height="320"
-              />
+              <img src="/images/default-red.png" alt="Profile" />
             </div>
             <BsChevronDown
               className={`text-white transition ${

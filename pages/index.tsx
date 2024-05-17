@@ -35,6 +35,10 @@ export default function Home() {
       <Billboard />
       <div className="pb-40">
         <MovieList title="Dagens bedste forslag til dig" data={movies} />
+        <MovieList title="Dagens bedste forslag til dig" data={movies} />
+        <MovieList title="Dagens bedste forslag til dig" data={movies} />
+        <MovieList title="Dagens bedste forslag til dig" data={movies} />
+        <MovieList title="Dagens bedste forslag til dig" data={movies} />
       </div>
     </>
   );
