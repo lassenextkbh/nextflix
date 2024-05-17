@@ -1,4 +1,4 @@
-import serverAuth from "../../lib/serverAuth";
+import serverAuth from "@/lib/serverAuth";
 import { NextApiResponse, NextApiRequest } from "next";
 
 export default async function handler(
