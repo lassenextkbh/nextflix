@@ -16,6 +16,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
 
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
+      {/* Viser filmens thumbnail */}
       <img
         className="
         cursor-pointer
@@ -52,6 +53,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
             group-hover:opacity-100
         "
       >
+        {/* Viser filmens thumbnail som størrere og lidt info om filmen når du placere markøren over filmens kort */}
         <img
           className="
                 cursor-pointer
@@ -80,6 +82,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         "
         >
           <div className="flex flex-row items-center gap-3">
+            {/* Viser knapper, informationer osv når markøren placeres over filmens kort */}
             <div
               className="
                     cursor-pointer
@@ -99,7 +102,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
             >
               <BsFillPlayFill size={30} />
             </div>
+            {/* Knappen til at tilføje filmen til dine favoritter */}
             <FavoriteButton movieId={data.id} />
+            {/* Knappen til at åbne en info-modal med information om filmen */}
             <div
               onClick={() => openModal(data?.id)}
               className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300"
@@ -111,14 +116,17 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
             </div>
           </div>
 
+          {/* Viser filmens udgivelsesår */}
           <p className="text-green-400 font-semibold mt-4">
             Ny <span className="text-white">2024</span>
           </p>
 
           <div className="flex flex-row mt-4 gap-2 items-center">
+            {/* Viser hvor lang tid filmen vare */}
             <p className="text-white text-[10px] lg:text-sm">{data.duration}</p>
           </div>
           <div className="flex flex-row mt-4 gap-2 items-center">
+            {/* Viser genren af filmen */}
             <p className="text-white text-[10px] lg:text-sm">{data.genre}</p>
           </div>
         </div>

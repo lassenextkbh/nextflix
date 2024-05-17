@@ -6,12 +6,18 @@ interface PlayButtonProps {
   movieId: string;
 }
 
+// Komponenten PlayButton modtager en prop kaldet movieId. Dette er id'et på den film, der skal afspilles.
 const PlayButton: React.FC<PlayButtonProps> = ({ movieId }) => {
   const router = useRouter();
 
+  // Når knappen klikkes, navigerers brugeren til "/watch/{movieId}"
+  const handleButtonClick = () => {
+    router.push(`/watch/${movieId}`);
+  };
+
   return (
     <button
-      onClick={() => router.push(`/watch/${movieId}`)}
+      onClick={handleButtonClick}
       className="
                 bg-white
                 rounded-md

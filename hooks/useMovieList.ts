@@ -9,9 +9,9 @@ const useMovieList = () => {
   });
 
   return {
-    data,
-    error,
-    isLoading,
+    data, // Data fra API-kaldet
+    error, // Eventuelle fejl, der kunne opstå under API-kaldet
+    isLoading, // Indlæsningsstatus
   }
 };
 

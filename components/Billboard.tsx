@@ -6,11 +6,11 @@ import PlayButton from "./PlayButton";
 import useInfoModal from "@/hooks/useInfoModal";
 
 const Billboard = () => {
-  const { data } = useBillboard();
-  const { openModal } = useInfoModal();
+  const { data } = useBillboard(); // Henter data fra hooken useBillboard. Denne hook henter informationen om en tilfældig film fra databasen
+  const { openModal } = useInfoModal(); // Henter funktionen openModal fra hooken useInfoModal
 
   const handleOpenModal = useCallback(() => {
-    openModal(data?.id);
+    openModal(data?.id); // Åbner en modal med filmens id, når der klikkes på knappen
   }, [openModal, data?.id]);
 
   return (
@@ -25,8 +25,8 @@ const Billboard = () => {
         autoPlay
         muted
         loop
-        poster={data?.thumbnailUrl}
-        src={data?.videoUrl}
+        poster={data?.thumbnailUrl} // Viser thumbnail for videoen
+        src={data?.videoUrl} // Viser videoen
       ></video>
       <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
         <p
@@ -39,6 +39,7 @@ const Billboard = () => {
             lg:text-6xl 
             font-bold 
             drop-shadow-xl"
+          // Viser titlen på videoen
         >
           {data?.title}
         </p>
@@ -54,13 +55,17 @@ const Billboard = () => {
             lg:w-[50%]
             drop-shadow-xl
         "
+          // Viser beskrivelsen af videoen
         >
           {data?.description}
         </p>
         <div className="flex flex-row items-center mt-3 md:mt-4 gap-3">
-          <PlayButton movieId={data?.id} />
+          <PlayButton
+            movieId={data?.id}
+            // Viser en afspilningsknap for videoen
+          />
           <button
-            onClick={handleOpenModal}
+            onClick={handleOpenModal} // Kalder handleOpenModal-funktionen, når der klikkes på knappen
             className="
                 bg-white
                 text-white
@@ -78,7 +83,10 @@ const Billboard = () => {
                 transition
             "
           >
-            <AiOutlineInfoCircle className="mr-2" />
+            <AiOutlineInfoCircle
+              // Viser et ikon samt teksten "Mere Info" på knappen. Knappen kan klikkes for at åbne en modal med information om filmen
+              className="mr-2"
+            />
             Mere Info
           </button>
         </div>

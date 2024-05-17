@@ -5,9 +5,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+  const session = await getSession(context); // Henter sessionen fra getSession-funktionen
 
   if (!session) {
+    // Hvis der ikke er nogen session, omdirigeres brugeren til login-siden
     return {
       redirect: {
         destination: "/auth",
@@ -22,9 +23,9 @@ export async function getServerSideProps(context: NextPageContext) {
 }
 
 const Profiles = () => {
-  const router = useRouter();
+  const router = useRouter(); // Henter routeren fra next/router. Denne bruges til at navigere til andre sider
 
-  const { data: user } = useCurrentUser();
+  const { data: user } = useCurrentUser(); // Henter brugeren fra databasen via useCurrentUser-hooken
 
   return (
     <div className="flex items-center h-full justify-center">

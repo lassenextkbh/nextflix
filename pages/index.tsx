@@ -11,9 +11,10 @@ import InfoModal from "@/components/InfoModal";
 import useInfoModal from "@/hooks/useInfoModal";
 
 export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context);
+  const session = await getSession(context); // Henter sessionen fra getSession-funktionen
 
   if (!session) {
+    // Hvis der ikke er nogen session, omdirigeres brugeren til login-siden
     return {
       redirect: {
         destination: "/auth",
@@ -28,9 +29,9 @@ export async function getServerSideProps(context: NextPageContext) {
 }
 
 export default function Home() {
-  const { data: movies = [] } = useMovieList();
-  const { data: favorites = [] } = useFavorites();
-  const { isOpen, closeModal } = useInfoModal();
+  const { data: movies = [] } = useMovieList(); // Henter filmene fra databasen via useMovieList-hooken
+  const { data: favorites = [] } = useFavorites(); // Henter brugerens favoritter fra databasen via useFavorites-hooken
+  const { isOpen, closeModal } = useInfoModal(); // Henter isOpen og closeModal fra useInfoModal-hooken
 
   return (
     <>

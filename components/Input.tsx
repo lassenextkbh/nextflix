@@ -1,21 +1,21 @@
 import React from "react";
 
 interface InputProps {
-  id: string;
-  onChange: any;
-  value: string;
-  label: string;
-  type?: string;
+  id: string; // Unik id for input-elementet
+  onChange: any; // Funktionen der kaldes når værdien ændres
+  value: string; // Den aktuelle værdi der er i input-elementet
+  label: string; // Teksten der vises som label for input-elementet
+  type?: string; // Valgfri attribut der angiver input-typen (f.eks. "text", "password" osv.)
 }
 
 const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
   return (
     <div className="relative">
       <input
-        onChange={onChange}
-        type={type}
-        value={value}
-        id={id}
+        onChange={onChange} // Kalder onChange-funktionen når værdien ændres
+        type={type} // Angiver input-typen (hvis angivet)
+        value={value} // Sætter den aktuelle værdi af input-elementet
+        id={id} // Sætter id-attributten for input-elementet
         className="
                     block
                     rounded-md
@@ -51,7 +51,7 @@ const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
         peer-focus:scale-75
         peer-focus:-translate-y-3
       "
-        htmlFor={id}
+        htmlFor={id} // Sætter id-attributten for label-elementet
       >
         {label}
       </label>

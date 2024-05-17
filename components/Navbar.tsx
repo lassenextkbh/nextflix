@@ -9,11 +9,12 @@ import AccountMenu from "./AccountMenu";
 const TOP_OFFSET = 66;
 
 const Navbar = () => {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [showAccountMenu, setShowAccountMenu] = useState(false);
-  const [showBackground, setShowBackground] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false); // State der holder styr på om mobil-menuen skal vises
+  const [showAccountMenu, setShowAccountMenu] = useState(false); // State der holder styr på om account-menuen skal vises
+  const [showBackground, setShowBackground] = useState(false); // State der holder styr på om baggrunden på navbaren skal vises
 
   useEffect(() => {
+    // Funktionen der håndterer scroll-eventet som skifter baggrundsfarven på navbaren
     const handleScroll = () => {
       if (window.scrollY >= TOP_OFFSET) {
         setShowBackground(true);
@@ -22,18 +23,22 @@ const Navbar = () => {
       }
     };
 
+    // Tilføj event listener til scroll-eventet
     window.addEventListener("scroll", handleScroll);
 
+    // Fjern event listener når komponenten unmountes
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   const toggleMobileMenu = useCallback(() => {
+    // Funktionen der skifter værdien af showMobileMenu
     setShowMobileMenu((current) => !current);
   }, []);
 
   const toggleAccountMenu = useCallback(() => {
+    // Funktionen der skifter værdien af showAccountMenu
     setShowAccountMenu((current) => !current);
   }, []);
 

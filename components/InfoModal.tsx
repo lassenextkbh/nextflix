@@ -11,16 +11,19 @@ interface InfoModalProps {
   onClose: any;
 }
 
+// Komponenten InfoModal viser en modal med information om filmen.
 const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
   const [isVisible, setIsVisible] = useState(!!visible);
 
   const { movieId } = useInfoModal();
   const { data = {} } = useMovie(movieId);
 
+  // Opdaterer isVisible-state, når visible-prop ændres.
   useEffect(() => {
     setIsVisible(!!visible);
   }, [visible]);
 
+  // Lukker modalen og kalder onClose-funktionen.
   const handleClose = useCallback(() => {
     setIsVisible(false);
     setTimeout(() => {
@@ -28,8 +31,10 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
     }, 300);
   }, [onClose]);
 
+  // Hvis isVisible er falsk, returneres intet.
   if (!isVisible) return null;
 
+  // Viser modalen med en forhåndsvisning af videoen, titlen, knapper osv.
   return (
     <div className="z-50 transition duration-300 bg-black bg-opacity-80 flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0">
       <div className="relative w-auto mx-auto max-w-3xl rounded-md overflow-hidden">

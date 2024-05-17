@@ -7,21 +7,24 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 
 const Auth = () => {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(""); // Opretter en usestatevariabel til email
+  const [name, setName] = useState(""); // Opretter en usestatevariabel til brugernavn
+  const [password, setPassword] = useState(""); // Opretter en usestatevariabel til password
 
-  const [variant, setVariant] = useState("login");
+  const [variant, setVariant] = useState("login"); // Opretter en usestatevariabel til varianten (login eller register)
 
   const toggleVariant = useCallback(() => {
+    // Skifter varianten fra login til register og omvendt
     setVariant((currentVariant) =>
       currentVariant === "login" ? "register" : "login"
     );
   }, []);
 
   const login = useCallback(async () => {
+    // Login-funktion
     try {
       await signIn("credentials", {
+        // Logger ind med email og password
         email,
         password,
         callbackUrl: "/profiles",
@@ -32,8 +35,10 @@ const Auth = () => {
   }, [email, password]);
 
   const register = useCallback(async () => {
+    // Registreringsfunktion
     try {
       await axios.post("/api/register", {
+        // Opretter en ny bruger i databasen
         email,
         name,
         password,
@@ -41,7 +46,7 @@ const Auth = () => {
 
       login();
     } catch (error) {
-      console.log(error);
+      console.log(error); // Udskriver eventuelle fejl i konsollen
     }
   }, [email, name, password, login]);
 

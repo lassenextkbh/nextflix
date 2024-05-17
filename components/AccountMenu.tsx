@@ -8,9 +8,9 @@ interface AccountMenuProps {
 }
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
-  const { data } = useCurrentUser();
+  const { data } = useCurrentUser(); // Henter data om den aktuelle bruger ved hjælp af hooken useCurrentUser
 
-  if (!visible) return null;
+  if (!visible) return null; // Hvis "visible" er falsk, returneres intet (komponenten er usynlig)
 
   return (
     <div className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-zinc-800 flex">
@@ -23,13 +23,16 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
             width="320"
             height="320"
           />
-          <p className="text-white text-sm group-hover/item:underline">
+          <p
+            className="text-white text-sm group-hover/item:underline"
+            // Viser brugerens navn, hvis det er tilgængeligt
+          >
             {data?.name}
           </p>
         </div>
         <hr className="bg-zinc-600 border-0 h-px my-4" />
         <div
-          onClick={() => signOut()}
+          onClick={() => signOut()} // Logger brugeren ud ved at kalde signOut-funktionen
           className="px-3 text-center text-white text-sm hover:underline"
         >
           Log ud af Nextflix
